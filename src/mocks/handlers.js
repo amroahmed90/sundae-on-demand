@@ -1,7 +1,7 @@
 import { rest } from 'msw';
 
 export const handlers = [
-  rest.get("http//localhost:3031/scoops", (req, res, ctx) => {
+  rest.get("http://localhost:3031/scoops", (req, res, ctx) => {
     return res(
       ctx.json([
         { name: "Mint Chip", imagePath: "/images/mint-chip.png" },
@@ -10,7 +10,7 @@ export const handlers = [
     );
   }),
 
-  rest.get("http//localhost:3031/toppings", (req, res, ctx) => {
+  rest.get("http://localhost:3031/toppings", (req, res, ctx) => {
   return res(
     ctx.json([
       { name: "M&Ms", imagePath: "/images/m-and-ms.png" },
