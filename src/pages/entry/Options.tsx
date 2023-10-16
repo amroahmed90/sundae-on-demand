@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ScoopOption from "./ScoopOption";
 import ToppingsOption from "./ToppingsOption";
-
+import Error from "../common/Error";
 
 type Props = {
   optionType: "scoops" | "toppings";
@@ -14,23 +14,36 @@ type DataType = {
 
 export default function Options({ optionType }: Props) {
   const [data, setData] = useState<DataType[]>([]);
+  const [error, setError] = useState<boolean>(false);
 
   // fetch scoops/toppings data from server
   useEffect(() => {
     fetch(`http://localhost:3031/${optionType}`)
       .then((response) => response.json())
       .then((json) => setData(json))
-      .catch((error => console.log(error)));
+      .catch((error) => setError(true));
   }, [optionType]);
 
-  const OptionComponent = optionType === "scoops" ? ScoopOption : ToppingsOption;
+  // render error if error occurs
+  if (error) {
+    return <Error errorMessage={"Error occured while fetching data from server"} />;
+  }
+
+  const OptionComponent =
+    optionType === "scoops" ? ScoopOption : ToppingsOption;
 
   return (
     <>
       <h1>{capitalizeFirstLetter(optionType)}</h1>
-      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-evenly" }}>
-        {data.map(item => {
-          return (<OptionComponent key={item.name} item={item} />)
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "space-evenly",
+        }}
+      >
+        {data.map((item) => {
+          return <OptionComponent key={item.name} item={item} />;
         })}
       </div>
     </>
