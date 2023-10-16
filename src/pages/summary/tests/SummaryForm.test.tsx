@@ -45,16 +45,20 @@ describe("tooltip responds to hover", () => {
   test("tooltip starts out hidden", () => {
     // initial coinditions => tooltip is hidden
     render(<SummaryForm />);
-    const tooltip = screen.queryByText(/no ice-cream will be actually delivered/i)
+    const tooltip = screen.queryByText(
+      /no ice-cream will be actually delivered/i,
+    );
     expect(tooltip).not.toBeInTheDocument();
   });
 
   test("tooltip appears upon mouseover of checkbox label and disappears upon mouseleave", async () => {
     render(<SummaryForm />);
-    const termsAndConditions = screen.getByText(/terms and conditions/i)
+    const termsAndConditions = screen.getByText(/terms and conditions/i);
     // on mouseover => tooltip appears
     await userEvent.hover(termsAndConditions);
-    const tooltip = screen.getByText(/no ice-cream will be actually delivered/i)
+    const tooltip = screen.getByText(
+      /no ice-cream will be actually delivered/i,
+    );
     expect(tooltip).toBeInTheDocument();
 
     // on mouseout => tooltip disappears

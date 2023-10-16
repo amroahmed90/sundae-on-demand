@@ -26,7 +26,9 @@ export default function Options({ optionType }: Props) {
 
   // render error if error occurs
   if (error) {
-    return <Error errorMessage={"Error occured while fetching data from server"} />;
+    return (
+      <Error errorMessage={"Error occured while fetching data from server"} />
+    );
   }
 
   const OptionComponent =

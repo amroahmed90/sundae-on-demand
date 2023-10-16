@@ -12,7 +12,7 @@ describe("test images response from server for scoops and toppings", () => {
 
     // confirm alt text of images
     const altText = scoopImages.map(
-      (element) => (element as HTMLImageElement).alt
+      (element) => (element as HTMLImageElement).alt,
     );
     expect(altText).toEqual(["Mint Chip scoop", "Salted Caramel scoop"]);
   });
@@ -27,7 +27,7 @@ describe("test images response from server for scoops and toppings", () => {
 
     // confirm alt text of images
     const altText = toppingImages.map(
-      (element) => (element as HTMLImageElement).alt
+      (element) => (element as HTMLImageElement).alt,
     );
     expect(altText).toEqual(["M&Ms topping", "Hot fudge topping"]);
   });

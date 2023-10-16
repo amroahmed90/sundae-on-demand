@@ -12,7 +12,9 @@ export default function SummaryForm() {
       <OverlayTrigger
         placement="right"
         overlay={() => (
-          <Tooltip id="terms-and-conditions">No ice-cream will be actually delivered!</Tooltip>
+          <Tooltip id="terms-and-conditions">
+            No ice-cream will be actually delivered!
+          </Tooltip>
         )}
       >
         <span style={{ color: "blue", fontWeight: "bold" }}>

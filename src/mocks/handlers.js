@@ -6,7 +6,7 @@ export const handlers = [
       ctx.json([
         { name: "Mint Chip", imagePath: "/images/mint-chip.png" },
         { name: "Salted Caramel", imagePath: "/images/salted-caramel.png" },
-      ])
+      ]),
     );
   }),
 
@@ -15,7 +15,7 @@ export const handlers = [
       ctx.json([
         { name: "M&Ms", imagePath: "/images/m-and-ms.png" },
         { name: "Hot fudge", imagePath: "/images/hot-fudge.png" },
-      ])
+      ]),
     );
   }),
 ];
