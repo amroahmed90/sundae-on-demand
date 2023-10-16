@@ -5,7 +5,12 @@ import Options from './pages/entry/Options';
 
 function App() {
   return (
-    <Options optionType='scoops' />
+    <>
+      <Options optionType='scoops' />
+      <br />
+      <br />
+      <Options optionType='toppings' />
+    </>
   );
 }
 

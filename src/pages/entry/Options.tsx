@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ScoopOption from "./ScoopOption";
+import ToppingsOption from "./ToppingsOption";
 
 
 type Props = {
@@ -22,12 +23,14 @@ export default function Options({ optionType }: Props) {
       .catch((error => console.log(error)));
   }, [optionType]);
 
+  const OptionComponent = optionType === "scoops" ? ScoopOption : ToppingsOption;
+
   return (
     <>
       <h1>{capitalizeFirstLetter(optionType)}</h1>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-evenly" }}>
         {data.map(item => {
-          return (<ScoopOption key={item.name} item={item} />)
+          return (<OptionComponent key={item.name} item={item} />)
         })}
       </div>
     </>
