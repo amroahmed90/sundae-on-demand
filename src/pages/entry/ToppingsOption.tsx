@@ -10,7 +10,7 @@ export default function ToppingsOption({ item }: OptionProps) {
     >
       <Card.Img
         variant="top"
-        src={`http://localhost:3031/${item.imagePath}`}
+        src={`http://localhost:3035/${item.imagePath}`}
         alt={`${item.name} topping`}
       />
       <Card.Body>

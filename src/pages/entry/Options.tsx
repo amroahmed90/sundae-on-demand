@@ -18,11 +18,15 @@ export default function Options({ optionType }: Props) {
 
   // fetch scoops/toppings data from server
   useEffect(() => {
-    fetch(`http://localhost:3031/${optionType}`)
+    fetch(`http://localhost:3035/${optionType}`)
       .then((response) => response.json())
       .then((json) => setData(json))
       .catch((error) => setError(true));
   }, [optionType]);
+
+  useEffect(() => {
+    console.log(data)
+  }, [data])
 
   // render error if error occurs
   if (error) {

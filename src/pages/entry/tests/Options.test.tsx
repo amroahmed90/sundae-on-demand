@@ -86,7 +86,7 @@ describe("test scoops and toppings Options component", () => {
   });
 });
 
-describe.only("test subtotal", () => {
+describe("test subtotal", () => {
   test("subtotal of scoops", async () => {
     const user = userEvent.setup();
     render(<Options optionType="scoops" />);
