@@ -25,8 +25,8 @@ export default function Options({ optionType }: Props) {
   }, [optionType]);
 
   useEffect(() => {
-    console.log(data)
-  }, [data])
+    console.log(data);
+  }, [data]);
 
   // render error if error occurs
   if (error) {

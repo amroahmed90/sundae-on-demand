@@ -13,9 +13,9 @@ export const INITIAL_ORDER_COUNTS = {
     Mochi: 0,
     Cherries: 0,
   },
-}
+};
 
 export const PRICE_PER_ITEM = {
   scoops: 2,
-  toppings: 1.5
-}
+  toppings: 1.5,
+};
