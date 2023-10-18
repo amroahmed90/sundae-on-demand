@@ -20,12 +20,6 @@ export default function ScoopOption({ item }: OptionProps) {
         alt={`${item.name} scoop`}
       />
       <Card.Body>
-        <Card.Title
-          style={{ textAlign: "center", marginTop: "10px" }}
-          data-testid="scoop-name"
-        >
-          {item.name}
-        </Card.Title>
         <Form.Group
           style={{
             display: "flex",
@@ -34,13 +28,22 @@ export default function ScoopOption({ item }: OptionProps) {
           }}
         >
           <Form.Label style={{ margin: "0 10px 0 0" }} data-testid="count">
-            Count:{" "}
+            <Card.Title
+              style={{ textAlign: "center", marginTop: "10px" }}
+              data-testid="scoop-name"
+            >
+              {item.name}
+            </Card.Title>
           </Form.Label>
-          <Form.Select aria-label="Scoop Count" data-testid="select">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-          </Form.Select>
+          <Form.Control
+            style={{ maxWidth: "25%" }}
+            aria-label="Scoop Count"
+            data-testid={`${item.name
+              .toLowerCase()
+              .replace(" ", "-")}-scoop-count`}
+            type="number"
+            defaultValue={0}
+          />
         </Form.Group>
       </Card.Body>
     </Card>
