@@ -47,9 +47,9 @@ export type OrderDetailsContextType = {
 
 // types for ScoopOptions.tsx
 export type DataType = {
-    name: ItemNameType;
-    imagePath: string;
-}
+  name: ItemNameType;
+  imagePath: string;
+};
 export type OptionProps = {
   item: DataType;
   optionType: OptionTypeT;
@@ -57,4 +57,6 @@ export type OptionProps = {
 
 export type StagesType = "entry" | "summary" | "final";
 
-export type SetStageType = {setStage: React.Dispatch<SetStateAction<StagesType>>}
+export type SetStageType = {
+  setStage: React.Dispatch<SetStateAction<StagesType>>;
+};

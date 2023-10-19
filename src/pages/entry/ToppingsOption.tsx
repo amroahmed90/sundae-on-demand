@@ -8,10 +8,13 @@ export default function ToppingsOption({ optionType, item }: OptionProps) {
   const { optionCounts, updateOptionCounts } = useOrderDetails();
 
   // handle checbox event
-  const handleCheckbox = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const newItemCount = optionCounts[optionType][item.name] === 1 ? 0 : 1;
-    updateOptionCounts({ optionType, itemName: item.name, newItemCount })
-  }, [item.name, optionCounts, optionType, updateOptionCounts])
+  const handleCheckbox = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const newItemCount = optionCounts[optionType][item.name] === 1 ? 0 : 1;
+      updateOptionCounts({ optionType, itemName: item.name, newItemCount });
+    },
+    [item.name, optionCounts, optionType, updateOptionCounts],
+  );
 
   return (
     <Card

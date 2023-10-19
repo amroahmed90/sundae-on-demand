@@ -6,8 +6,7 @@ import { PRICE_PER_ITEM } from "../../constants/constants";
 import { DataType, OptionTypeT } from "../../types/types";
 import { useOrderDetails } from "../../contexts/OrderDetailsProvider";
 
-
-export default function Options({ optionType }: {optionType: OptionTypeT}) {
+export default function Options({ optionType }: { optionType: OptionTypeT }) {
   // context
   const { subTotals } = useOrderDetails();
   // states
@@ -21,7 +20,7 @@ export default function Options({ optionType }: {optionType: OptionTypeT}) {
       .then((response) => response.json())
       .then((json) => setData(json))
       .catch((error) => setError(true));
-    return () => controller.abort()
+    return () => controller.abort();
   }, [optionType]);
 
   // render error if error occurs
@@ -36,9 +35,11 @@ export default function Options({ optionType }: {optionType: OptionTypeT}) {
 
   return (
     <>
-      <h2 style={{ textAlign:"center" }}>{capitalizeFirstLetter(optionType)}</h2>
+      <h2 style={{ textAlign: "center" }}>
+        {capitalizeFirstLetter(optionType)}
+      </h2>
       <h3>${PRICE_PER_ITEM[optionType].toFixed(2)} each.</h3>
-      <h3>SubTotal: ${ subTotals[optionType] }</h3>
+      <h3>SubTotal: ${subTotals[optionType]}</h3>
       <div
         style={{
           display: "flex",
@@ -47,7 +48,13 @@ export default function Options({ optionType }: {optionType: OptionTypeT}) {
         }}
       >
         {data.map((item) => {
-          return <OptionComponent key={item.name} item={item} optionType={optionType} />;
+          return (
+            <OptionComponent
+              key={item.name}
+              item={item}
+              optionType={optionType}
+            />
+          );
         })}
       </div>
     </>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Entry from "./pages/entry/Entry";
 import { OrderDetailsProvider } from "./contexts/OrderDetailsProvider";
@@ -9,9 +9,6 @@ import SummaryForm from "./pages/summary/SummaryForm";
 function App() {
   const [stage, setStage] = useState<StagesType>("entry");
 
-  // useEffect(()=>{
-  //   console.log(stage)
-  // }, [stage])
   return (
     <OrderDetailsProvider>
       {stage === "entry" && <Entry setStage={setStage} />}

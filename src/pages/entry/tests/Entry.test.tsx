@@ -10,7 +10,7 @@ test("handles error for scoops and toppings routes", async () => {
     rest.get("http://localhost:3031", (req, res, ctx) => res(ctx.status(500))),
   );
 
-  render(<Entry setStage={jest.fn()}/>);
+  render(<Entry setStage={jest.fn()} />);
   // race error
   // when not using waitFor, the test only finds 1 alert - why?
   // there are 2 alerts are being rendered

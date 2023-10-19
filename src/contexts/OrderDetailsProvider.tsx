@@ -1,9 +1,4 @@
-import {
-  PropsWithChildren,
-  createContext,
-  useContext,
-  useState,
-} from "react";
+import { PropsWithChildren, createContext, useContext, useState } from "react";
 import { INITIAL_ORDER_COUNTS, PRICE_PER_ITEM } from "../constants/constants";
 import {
   UpdateOptionCountType,
@@ -45,7 +40,7 @@ export const OrderDetailsProvider: React.FC<
     itemName,
     newItemCount,
   }: UpdateOptionCountType): void {
-    const newOptionCounts: OptionCountsType = {...optionCounts};
+    const newOptionCounts: OptionCountsType = { ...optionCounts };
     newOptionCounts[optionType][itemName] = newItemCount;
     setOptionCounts(newOptionCounts);
   }
@@ -53,10 +48,7 @@ export const OrderDetailsProvider: React.FC<
   function calculateSubTotal(optionType: OptionTypeT): number {
     // get an array of counts for the option type (for example [2, 1, 0])
     const countsArray = Object.values(optionCounts[optionType]);
-    const optionCount = countsArray.reduce(
-      (total, value) => total + value,
-      0,
-    );
+    const optionCount = countsArray.reduce((total, value) => total + value, 0);
     return optionCount * PRICE_PER_ITEM[optionType];
   }
 
@@ -65,8 +57,6 @@ export const OrderDetailsProvider: React.FC<
     toppings: calculateSubTotal("toppings"),
   };
 
-  const value =  { optionCounts, subTotals, updateOptionCounts, resetOrder };
-  return (
-    <OrderDetails.Provider value={value} {...props} />
-  );
+  const value = { optionCounts, subTotals, updateOptionCounts, resetOrder };
+  return <OrderDetails.Provider value={value} {...props} />;
 };
