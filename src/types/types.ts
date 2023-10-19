@@ -29,7 +29,7 @@ export type OptionCountsType = {
   };
 };
 
-type SubTotalsType = {
+export type SubTotalsType = {
   scoops: number;
   toppings: number;
 };
@@ -55,7 +55,7 @@ export type OptionProps = {
   optionType: OptionTypeT;
 };
 
-export type StagesType = "entry" | "summary" | "final";
+export type StagesType = "entry" | "summary" | "confirmation";
 
 export type SetStageType = {
   setStage: React.Dispatch<SetStateAction<StagesType>>;

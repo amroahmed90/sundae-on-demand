@@ -1,8 +1,8 @@
 import React from "react";
-import { Button } from "react-bootstrap";
 import Options from "./Options";
 import { SetStageType } from "../../types/types";
 import { useOrderDetails } from "../../contexts/OrderDetailsProvider";
+import MyButton from "../common/MyButton";
 
 export default function Entry({ setStage }: SetStageType) {
   // context
@@ -26,13 +26,11 @@ export default function Entry({ setStage }: SetStageType) {
         }}
       >
         <h2>Grand Total = ${total}</h2>
-        <Button
-          type="button"
+        <MyButton
           onClick={() => setStage("summary")}
-          disabled={total < 2}
-        >
-          To Checkout
-        </Button>
+          btnText="To Checkout"
+          isDisabled={total < 2}
+        />
       </div>
       <br />
     </>

@@ -32,7 +32,23 @@ export const OrderDetailsProvider: React.FC<
     useState<OptionCountsType>(INITIAL_ORDER_COUNTS);
 
   function resetOrder(): void {
-    setOptionCounts(INITIAL_ORDER_COUNTS);
+    // using INITIAL_ORDER_COUNTS doesn't actually resets! - why? Assignment by reference.
+    setOptionCounts({
+      scoops: {
+        "Mint chip": 0,
+        Vanilla: 0,
+        Chocolate: 0,
+        "Salted caramel": 0,
+      },
+      toppings: {
+        "M&Ms": 0,
+        "Hot fudge": 0,
+        "Peanut butter cups": 0,
+        "Gummi bears": 0,
+        Mochi: 0,
+        Cherries: 0,
+      },
+    });
   }
 
   function updateOptionCounts({

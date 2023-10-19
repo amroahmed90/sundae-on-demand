@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 
 describe("Initial conditions", () => {
   test("Checkbox is unchecked by default", () => {
-    render(<SummaryForm />);
+    render(<SummaryForm setStage={jest.fn()} />);
     const checkbox = screen.getByRole("checkbox", {
       name: /terms and conditions/i,
     });
@@ -13,7 +13,7 @@ describe("Initial conditions", () => {
   });
 
   test("Submit button is disabled by default", () => {
-    render(<SummaryForm />);
+    render(<SummaryForm setStage={jest.fn()} />);
     const button = screen.getByRole("button", { name: /confirm order/i });
     expect(button).toBeDisabled();
   });
@@ -23,7 +23,7 @@ describe("Checkbox and button interactions", () => {
   test("Button is enabled when checkbox is checked", async () => {
     const user = userEvent.setup();
 
-    render(<SummaryForm />);
+    render(<SummaryForm setStage={jest.fn()} />);
     const checkbox = screen.getByRole("checkbox", {
       name: /terms and conditions/i,
     });
@@ -44,7 +44,7 @@ describe("Checkbox and button interactions", () => {
 describe("tooltip responds to hover", () => {
   test("tooltip starts out hidden", () => {
     // initial coinditions => tooltip is hidden
-    render(<SummaryForm />);
+    render(<SummaryForm setStage={jest.fn()} />);
     const tooltip = screen.queryByText(
       /no ice-cream will be actually delivered/i,
     );
@@ -52,7 +52,7 @@ describe("tooltip responds to hover", () => {
   });
 
   test("tooltip appears upon mouseover of checkbox label and disappears upon mouseleave", async () => {
-    render(<SummaryForm />);
+    render(<SummaryForm setStage={jest.fn()} />);
     const termsAndConditions = screen.getByText(/terms and conditions/i);
     // on mouseover => tooltip appears
     await userEvent.hover(termsAndConditions);
