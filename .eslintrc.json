@@ -5,5 +5,8 @@
     "react-app/jest",
     "plugin:jest-dom/recommended",
     "prettier"
-  ]
+  ],
+  "rules": {
+    "no-console": "warn"
+  }
 }

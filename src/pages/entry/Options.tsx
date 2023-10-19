@@ -2,31 +2,27 @@ import React, { useEffect, useState } from "react";
 import ScoopOption from "./ScoopOption";
 import ToppingsOption from "./ToppingsOption";
 import Error from "../common/Error";
+import { PRICE_PER_ITEM } from "../../constants/constants";
+import { DataType, OptionTypeT } from "../../types/types";
+import { useOrderDetails } from "../../contexts/OrderDetailsProvider";
 
-type Props = {
-  optionType: "scoops" | "toppings";
-};
 
-type DataType = {
-  name: string;
-  imagePath: string;
-};
-
-export default function Options({ optionType }: Props) {
+export default function Options({ optionType }: {optionType: OptionTypeT}) {
+  // context
+  const { subTotals } = useOrderDetails();
+  // states
   const [data, setData] = useState<DataType[]>([]);
   const [error, setError] = useState<boolean>(false);
 
   // fetch scoops/toppings data from server
   useEffect(() => {
+    const controller = new AbortController();
     fetch(`http://localhost:3035/${optionType}`)
       .then((response) => response.json())
       .then((json) => setData(json))
       .catch((error) => setError(true));
+    return () => controller.abort()
   }, [optionType]);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   // render error if error occurs
   if (error) {
@@ -40,7 +36,9 @@ export default function Options({ optionType }: Props) {
 
   return (
     <>
-      <h1>{capitalizeFirstLetter(optionType)}</h1>
+      <h2 style={{ textAlign:"center" }}>{capitalizeFirstLetter(optionType)}</h2>
+      <h3>${PRICE_PER_ITEM[optionType].toFixed(2)} each.</h3>
+      <h3>SubTotal: ${ subTotals[optionType] }</h3>
       <div
         style={{
           display: "flex",
@@ -49,7 +47,7 @@ export default function Options({ optionType }: Props) {
         }}
       >
         {data.map((item) => {
-          return <OptionComponent key={item.name} item={item} />;
+          return <OptionComponent key={item.name} item={item} optionType={optionType} />;
         })}
       </div>
     </>
