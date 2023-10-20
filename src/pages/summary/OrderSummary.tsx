@@ -48,7 +48,12 @@ const OptionSummary = ({ optionType }: { optionType: OptionTypeT }) => {
       <ul>
         {usedItemsArray.map((item) => (
           <li key={item}>
-            <b>{item}:</b> {option[item]} {optionType}
+            {optionType === "scoops" && (
+              <>
+                <b>{item}:</b> {option[item]} {optionType}
+              </>
+            )}
+            {optionType === "toppings" && <b>{item}</b>}
           </li>
         ))}
       </ul>
