@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "../../../testing-utils/testing-library-utils";
 import userEvent from "@testing-library/user-event";
 import Options from "../Options";
 
@@ -92,7 +92,7 @@ describe("test subtotal", () => {
     render(<Options optionType="scoops" />);
 
     // find subtotal amount
-    const subtotal = screen.getByText("Scoops subtotal: $", { exact: false });
+    const subtotal = screen.getByText("Subtotal: $", { exact: false });
 
     // initially it will be $0.00
     expect(subtotal).toHaveTextContent("0.00");

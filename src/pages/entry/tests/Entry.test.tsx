@@ -1,4 +1,8 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import {
+  render,
+  screen,
+  waitFor,
+} from "../../../testing-utils/testing-library-utils";
 import Entry from "../Entry";
 import { server } from "../../../mocks/server";
 import { rest } from "msw";
@@ -6,8 +10,12 @@ import { rest } from "msw";
 test("handles error for scoops and toppings routes", async () => {
   // reset handlers and replace by erroneous handlers
   server.resetHandlers(
-    rest.get("http://localhost:3031", (req, res, ctx) => res(ctx.status(500))),
-    rest.get("http://localhost:3031", (req, res, ctx) => res(ctx.status(500))),
+    rest.get("http://localhost:3035/scoops", (req, res, ctx) =>
+      res(ctx.status(500)),
+    ),
+    rest.get("http://localhost:3035/toppings", (req, res, ctx) =>
+      res(ctx.status(500)),
+    ),
   );
 
   render(<Entry setStage={jest.fn()} />);

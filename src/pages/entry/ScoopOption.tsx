@@ -61,7 +61,7 @@ export default function ScoopOption({ item, optionType }: OptionProps) {
               .toLowerCase()
               .replace(" ", "-")}-scoop-count`}
             type="number"
-            value={optionCounts[optionType][item.name] as number}
+            defaultValue={optionCounts[optionType][item.name] as number}
             onChange={handleChange}
             isInvalid={!isValid}
           />

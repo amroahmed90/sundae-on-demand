@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "../../../testing-utils/testing-library-utils";
 import SummaryForm from "../SummaryForm";
 import userEvent from "@testing-library/user-event";
 

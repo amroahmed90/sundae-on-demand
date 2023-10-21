@@ -39,7 +39,7 @@ export default function Options({ optionType }: { optionType: OptionTypeT }) {
         {capitalizeFirstLetter(optionType)}
       </h2>
       <h3>${PRICE_PER_ITEM[optionType].toFixed(2)} each.</h3>
-      <h3>SubTotal: ${subTotals[optionType]}</h3>
+      <h3>SubTotal: ${subTotals[optionType].toFixed(2)}</h3>
       <div
         style={{
           display: "flex",

@@ -50,7 +50,8 @@ const OptionSummary = ({ optionType }: { optionType: OptionTypeT }) => {
           <li key={item}>
             {optionType === "scoops" && (
               <>
-                <b>{item}:</b> {option[item]} {option[item] === 1 ? optionType.slice(0, -1) : optionType}
+                <b>{item}:</b> {option[item]}{" "}
+                {option[item] === 1 ? optionType.slice(0, -1) : optionType}
               </>
             )}
             {optionType === "toppings" && <b>{item}</b>}
