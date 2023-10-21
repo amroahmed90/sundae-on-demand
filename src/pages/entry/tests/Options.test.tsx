@@ -123,7 +123,7 @@ describe("test subtotal", () => {
     const toppingsSelect = await screen.findAllByText("Select")
     expect(toppingsSelect).toHaveLength(2)
     // click on toppings
-    toppingsSelect.forEach(async (topping) => await userEvent.click(topping))
+    toppingsSelect.forEach(async (topping) => await user.click(topping))
     // make sure checkboxes are checked after clicking on the labels
     const checkboxes = await screen.findAllByTestId("topping-select")
     await waitFor(() => checkboxes.forEach(cb => expect(cb).toBeChecked()))
@@ -131,7 +131,7 @@ describe("test subtotal", () => {
     await waitFor(() => expect(subTotal).toHaveTextContent("3.00")) 
 
     /* deselect all toppings and assure subtotal is 0.00 */
-    toppingsSelect.forEach(async (topping) => await userEvent.click(topping))
+    toppingsSelect.forEach(async (topping) => await user.click(topping))
     // make sure checkboxes are unchecked after clicking on the labels the second time
     await waitFor(() => checkboxes.forEach(cb => expect(cb).not.toBeChecked()))
     // make sure the toppings subtotal is updated    
