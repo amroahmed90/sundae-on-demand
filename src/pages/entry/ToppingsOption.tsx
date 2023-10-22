@@ -43,7 +43,9 @@ export default function ToppingsOption({ optionType, item }: OptionProps) {
           <Form.Check
             type="checkbox"
             label="Select"
-            data-testid="topping-select"
+            data-testid={`${item.name
+              .toLowerCase()
+              .replace(" ", "-")}-topping-select`}
             id={item.name}
             checked={(optionCounts[optionType][item.name] as number) === 1}
             onChange={handleCheckbox}

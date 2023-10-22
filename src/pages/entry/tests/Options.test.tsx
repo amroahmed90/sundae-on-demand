@@ -1,4 +1,8 @@
-import { render, screen, waitFor } from "../../../testing-utils/testing-library-utils";
+import {
+  render,
+  screen,
+  waitFor,
+} from "../../../testing-utils/testing-library-utils";
 import userEvent from "@testing-library/user-event";
 import Options from "../Options";
 
@@ -114,28 +118,31 @@ describe("test subtotal", () => {
     expect(subtotal).toHaveTextContent("6.00");
   });
   test("subtotal of toppings", async () => {
-    render(<Options optionType="toppings" />)
+    render(<Options optionType="toppings" />);
     /* subtotal is initially 0.00 */
-    const subTotal = await screen.findByText(/subtotal/i, { exact: false })
-    expect(subTotal).toHaveTextContent("0.00")
+    const subTotal = await screen.findByText(/subtotal/i, { exact: false });
+    expect(subTotal).toHaveTextContent("0.00");
 
     /* select some toppings and check subtotal */
-    const toppingsSelect = await screen.findAllByText("Select")
-    expect(toppingsSelect).toHaveLength(2)
+    const toppingsSelect = await screen.findAllByText("Select");
+    expect(toppingsSelect).toHaveLength(2);
     // click on toppings
-    toppingsSelect.forEach(async (topping) => await user.click(topping))
+    toppingsSelect.forEach(async (topping) => await user.click(topping));
     // make sure checkboxes are checked after clicking on the labels
-    const checkboxes = await screen.findAllByTestId("topping-select")
-    await waitFor(() => checkboxes.forEach(cb => expect(cb).toBeChecked()))
-    // make sure the toppings subtotal is updated    
-    await waitFor(() => expect(subTotal).toHaveTextContent("3.00")) 
+    const checkboxes = await screen.findAllByTestId("topping-select", {
+      exact: false,
+    });
+    await waitFor(() => checkboxes.forEach((cb) => expect(cb).toBeChecked()));
+    // make sure the toppings subtotal is updated
+    await waitFor(() => expect(subTotal).toHaveTextContent("3.00"));
 
     /* deselect all toppings and assure subtotal is 0.00 */
-    toppingsSelect.forEach(async (topping) => await user.click(topping))
+    toppingsSelect.forEach(async (topping) => await user.click(topping));
     // make sure checkboxes are unchecked after clicking on the labels the second time
-    await waitFor(() => checkboxes.forEach(cb => expect(cb).not.toBeChecked()))
-    // make sure the toppings subtotal is updated    
-    await waitFor(() => expect(subTotal).toHaveTextContent("0.00"))
-
-  })
+    await waitFor(() =>
+      checkboxes.forEach((cb) => expect(cb).not.toBeChecked()),
+    );
+    // make sure the toppings subtotal is updated
+    await waitFor(() => expect(subTotal).toHaveTextContent("0.00"));
+  });
 });

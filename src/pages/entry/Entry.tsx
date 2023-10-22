@@ -25,7 +25,7 @@ export default function Entry({ setStage }: SetStageType) {
           alignItems: "center",
         }}
       >
-        <h2>Grand Total = ${total}</h2>
+        <h2>Grand Total = ${total.toFixed(2)}</h2>
         <MyButton
           onClick={() => setStage("summary")}
           btnText="To Checkout"

@@ -22,7 +22,7 @@ export default function OrderSummary() {
       </div>
       <br />
       <h2 style={{ textAlign: "center" }}>
-        Grand Total: ${subTotals["scoops"] + subTotals["toppings"]}
+        Grand Total: ${(subTotals["scoops"] + subTotals["toppings"]).toFixed(2)}
       </h2>
     </>
   );
